@@ -1,0 +1,128 @@
+---
+
+- hosts: localhost
+  tasks:
+    # Fun to have packages
+    - name: Install docker
+      apt:
+        name: "docker.io"
+        state: present
+      become: yes
+    - name: Install emacs
+      apt:
+        name: "emacs"
+        state: present
+      become: yes
+    - name: Install git
+      apt:
+        name: "git"
+        state: present
+      become: yes
+    - name: Install jq
+      apt:
+        name: "jq"
+        state: present
+      become: yes
+    - name: Install the Silver Searcher
+      apt:
+        name: "silversearcher-ag"
+        state: present
+      become: yes
+    - name: Install vim
+      apt:
+        name: "vim"
+        state: present
+      become: yes
+
+    # Required to build gpdb
+    - name: Install zlib dev
+      apt:
+        name: "zlib1g-dev"
+        state: present
+      become: yes
+    - name: Install curl development package
+      apt:
+        name: "libcurl4-gnutls-dev"
+        state: present
+      become: yes
+    - name: Install openssl development package
+      apt:
+        name: "libssl-dev"
+        state: present
+      become: yes
+    - name: Install readline development package (for Ruby)
+      apt:
+        name: "libreadline-dev"
+        state: present
+      become: yes
+    - name: Install the bison package
+      apt:
+        name: "bison"
+        state: present
+      become: yes
+    - name: Install the flex package
+      apt:
+        name: "flex"
+        state: present
+      become: yes
+    - name: Install the cmake package
+      apt:
+        name: "cmake"
+        state: present
+      become: yes
+    - name: Install the apr-util development package
+      apt:
+        name: "libaprutil1-dev"
+        state: present
+      become: yes
+    - name: Install the libevent development package
+      apt:
+        name: "libevent-dev"
+        state: present
+      become: yes
+    - name: Install the libxml2-dev development package
+      apt:
+        name: "libxml2-dev"
+        state: present
+      become: yes
+    - name: Install the libbz2-dev development package
+      apt:
+        name: "libbz2-dev"
+        state: present
+      become: yes
+    - name: Install the libyaml development package
+      apt:
+        name: "libyaml-dev"
+        state: present
+      become: yes
+    - name: Install the libperl development package
+      apt:
+        name: "libperl-dev"
+        state: present
+      become: yes
+    - name: Install the libpython development package
+      apt:
+        name: "libpython-dev"
+        state: present
+      become: yes
+    - name: Install the libpython development package
+      apt:
+        name: "libpython-dev"
+        state: present
+      become: yes
+    - name: Install the libssl development package
+      apt:
+        name: "libssl-dev"
+        state: present
+      become: yes
+    - name: Install the openssh-server package
+      apt:
+        name: "openssh-server"
+        state: present
+      become: yes
+    - name: Install the libzstandard development package
+      apt:
+        name: "libzstd-dev"
+        state: present
+      become: yes
+
