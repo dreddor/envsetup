@@ -1,0 +1,20 @@
+---
+
+- hosts: localhost
+  tasks:
+    - name: Download Terraform CLI
+      get_url:
+        url: https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip
+        dest: /tmp/terraform_0.11.10_linux_amd64.zip
+    - name: Extract Terraform CLI
+      unarchive:
+        src: /tmp/terraform_0.11.10_linux_amd64.zip
+        dest: /tmp/
+    - name: Install Terraform CLI in PATH
+      copy:
+        src: /tmp/terraform
+        dest: /usr/local/bin/terraform
+        mode: 0755
+      become: yes
+        
+
