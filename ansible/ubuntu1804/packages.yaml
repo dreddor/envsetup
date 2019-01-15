@@ -10,7 +10,7 @@
       become: yes
     - name: Install emacs
       apt:
-        name: "emacs"
+        name: "emacs-nox"
         state: present
       become: yes
     - name: Install git
