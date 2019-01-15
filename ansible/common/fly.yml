@@ -1,0 +1,17 @@
+---
+
+- hosts: localhost
+  tasks:
+    - name: Download and install fly 4.2.1
+      get_url:
+        url: https://github.com/concourse/concourse/releases/download/v4.2.1/fly_linux_amd64
+        dest: /usr/local/bin/fly_linux_amd64-4.2.1
+        mode: 0755
+      become: yes
+    - name: Set fly 4.2.1 as the system default
+      file:
+        src: /usr/local/bin/fly_linux_amd64-4.2.1
+        dest: /usr/local/bin/fly
+        state: link
+        mode: 0755
+      become: yes
