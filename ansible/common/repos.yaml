@@ -1,0 +1,65 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Create the deployments directory
+      file:
+        path: "{{ lookup('env','HOME') }}/deployments"
+        state: directory
+        mode: 0755
+    - name: Cloning bosh into ~/deployments
+      git:
+        repo: 'dreddor@dreddor.net:build/bosh'
+        dest: "{{ lookup('env','HOME') }}/deployments/bosh"
+        remote: origin
+        accept_hostkey: yes
+    - name: Cloning cloudinit-template-builder into ~/deployments
+      git:
+        repo: 'dreddor@dreddor.net:build/cloudinit-template-builder'
+        dest: "{{ lookup('env','HOME') }}/deployments/cloudinit-template-builder"
+        remote: origin
+        accept_hostkey: yes
+    - name: Cloning concourse into ~/deployments
+      git:
+        repo: 'dreddor@dreddor.net:build/concourse'
+        dest: "{{ lookup('env','HOME') }}/deployments/concourse"
+        remote: origin
+        accept_hostkey: yes
+    - name: Cloning creds into ~/deployments
+      git:
+        repo: 'dreddor@dreddor.net:build/creds'
+        dest: "{{ lookup('env','HOME') }}/deployments/creds"
+        remote: origin
+        accept_hostkey: yes
+    - name: Cloning credstore into ~/deployments
+      git:
+        repo: 'dreddor@dreddor.net:build/credstore'
+        dest: "{{ lookup('env','HOME') }}/deployments/credstore"
+        remote: origin
+        accept_hostkey: yes
+    - name: Cloning vcenter-terraform into ~/deployments
+      git:
+        repo: 'dreddor@dreddor.net:build/vcenter-terraform'
+        dest: "{{ lookup('env','HOME') }}/deployments/vcenter-terraform"
+        remote: origin
+        accept_hostkey: yes
+    - name: Cloning windeploy into ~/deployments
+      git:
+        repo: 'dreddor@dreddor.net:build/windeploy'
+        dest: "{{ lookup('env','HOME') }}/deployments/windeploy"
+        remote: origin
+        accept_hostkey: yes
+
+    - name: Create the workspace directory
+      file:
+        path: "{{ lookup('env','HOME') }}/workspace"
+        state: directory
+    - name: Cloning gpdb into ~/workspace
+      git:
+        repo: "https://github.com/greenplum-db/gpdb"
+        dest: "{{ lookup('env','HOME') }}/workspace/gpdb"
+        remote: origin
+    - name: Cloning postgres into ~/workspace
+      git:
+        repo: "https://github.com/postgres/postgres"
+        dest: "{{ lookup('env','HOME') }}/workspace/postgres"
+        remote: origin
