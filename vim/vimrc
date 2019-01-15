@@ -1,0 +1,61 @@
+" ============================================================================
+"                                  Pathogen
+" ============================================================================
+execute pathogen#infect()
+
+" ============================================================================
+"                               Basic Settings
+" ============================================================================
+syntax on
+filetype on
+filetype plugin indent on
+set number
+set background=dark
+set t_Co=256
+set term=screen-256color
+colorscheme molokai
+
+" ============================================================================
+"                             Navigation Settings
+" ============================================================================
+" ctrl-jklm - Navigate between windows without having to cry :(
+" map ctrl+jklm to map to ctrl+w jklm
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+" ============================================================================
+"                              Code Indentation
+" ============================================================================
+set smartindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+" Automatically delete four spaces with backspace:
+set softtabstop=4
+
+set foldlevel=99            " don't fold by default
+
+" displays tabs with :set list & displays when a line runs off-screen
+set listchars=tab:>-,trail:-,precedes:<,extends:>
+
+" ============================================================
+" FileType specific changes
+" ============================================================
+" html
+autocmd FileType html,xhtml,xml,css setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+" Python
+autocmd FileType python setlocal foldmethod=indent
+autocmd FileType python setlocal list
+
+" Code folding for c:
+autocmd FileType c setlocal foldmethod=syntax
+
+
+" Set a colorcolumn at line 79. Our last character should not be beyond this
+" point.
+if exists("&colorcolumn")
+    set colorcolumn=79
+endif
