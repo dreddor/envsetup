@@ -51,6 +51,6 @@
         name: molokai ## default: vim-elixir
         version: master ## default: master
       - repo: "https://github.com/sickill/vim-monokai"
-        name: monokai ## default: vim-elixir
+        name: vim-monokai ## default: vim-elixir
       - repo: "https://github.com/PProvost/vim-ps1.git"
         name: vim-ps1
