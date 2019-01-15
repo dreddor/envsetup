@@ -105,11 +105,6 @@
         name: "libpython-dev"
         state: present
       become: yes
-    - name: Install the libpython development package
-      apt:
-        name: "libpython-dev"
-        state: present
-      become: yes
     - name: Install the libssl development package
       apt:
         name: "libssl-dev"
