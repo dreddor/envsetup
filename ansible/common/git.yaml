@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  tasks:
+    - git_config:
+        name: core.editor
+        scope: global
+        value: vim
+    - git_config:
+        name: user.email
+        scope: global
+        value: 'dreddor@dreddor.net'
+    - git_config:
+        name: user.name
+        scope: global
+        value: 'Taylor Vesely'

@@ -58,6 +58,11 @@
         repo: "https://github.com/greenplum-db/gpdb"
         dest: "{{ lookup('env','HOME') }}/workspace/gpdb"
         remote: origin
+    - git_config:
+        name: user.email
+        repo: "{{ lookup('env','HOME') }}/workspace/gpdb"
+        scope: local
+        value: 'tvesely@pivotal.io'
     - name: Cloning postgres into ~/workspace
       git:
         repo: "https://github.com/postgres/postgres"
