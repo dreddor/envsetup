@@ -4,11 +4,11 @@
   tasks:
     - name: Download Terraform CLI
       get_url:
-        url: https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip
-        dest: /tmp/terraform_0.11.10_linux_amd64.zip
+        url: https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.11_linux_amd64.zip
+        dest: /tmp/terraform_0.11.11_linux_amd64.zip
     - name: Extract Terraform CLI
       unarchive:
-        src: /tmp/terraform_0.11.10_linux_amd64.zip
+        src: /tmp/terraform_0.11.11_linux_amd64.zip
         dest: /tmp/
     - name: Install Terraform CLI in PATH
       copy:
