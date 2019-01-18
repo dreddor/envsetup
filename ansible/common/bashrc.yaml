@@ -1,0 +1,7 @@
+- hosts: localhost
+  tasks:
+  - name: Add common bashrc customizations
+    blockinfile:
+      dest: "{{ lookup('env','HOME') }}/.bashrc"
+      block: "{{ lookup('file', '~/deployments/envsetup/bashrc/bashrc.common') }}"
+      create: yes
