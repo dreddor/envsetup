@@ -63,6 +63,14 @@
         repo: "{{ lookup('env','HOME') }}/workspace/gpdb"
         scope: local
         value: 'tvesely@pivotal.io'
+    # Allows CLion to intraspect the gpdb project
+    - name: Add a CMakeLists.txt file to the gpdb repo
+      copy:
+        src: "{{lookup ('env', 'HOME')}}/deployments/envsetup/gpdb/CMakeLists.txt"
+        dest: "{{lookup ('env', 'HOME')}}/workspace/gpdb/CMakeLists.txt"
+        mode: 0644
+        owner: "{{lookup ('env', 'USER') }}"
+        group: "{{lookup ('env', 'USER') }}"
     - name: Cloning gpdb into ~/workspace
       git:
         repo: "https://github.com/tvesely/gdbpg"
