@@ -63,6 +63,16 @@
         repo: "{{ lookup('env','HOME') }}/workspace/gpdb"
         scope: local
         value: 'tvesely@pivotal.io'
+    - name: Cloning gpdb into ~/workspace
+      git:
+        repo: "https://github.com/tvesely/gdbpg"
+        dest: "{{ lookup('env','HOME') }}/workspace/gdbpg"
+        remote: origin
+    - git_config:
+        name: user.email
+        repo: "{{ lookup('env','HOME') }}/workspace/gdbpg"
+        scope: local
+        value: 'tvesely@pivotal.io'
     - name: Cloning postgres into ~/workspace
       git:
         repo: "https://github.com/postgres/postgres"
