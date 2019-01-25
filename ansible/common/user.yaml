@@ -33,3 +33,17 @@
       mode: 0775
       owner: root
       group: wheel
+  - name: Create a directory for gpdb installation
+    file:
+      path: "/usr/local/gpdb"
+      state: directory
+      mode: 0755
+      owner: "{{lookup ('env', 'USER') }}"
+      group: "{{lookup ('env', 'USER') }}"
+  - name: Create a directory for postgres installation
+    file:
+      path: "/usr/local/pgsql"
+      state: directory
+      mode: 0755
+      owner: "{{lookup ('env', 'USER') }}"
+      group: "{{lookup ('env', 'USER') }}"
