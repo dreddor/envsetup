@@ -126,4 +126,8 @@
         name: "libzstd-dev"
         state: present
       become: yes
-
+    - name: Install the net-tools package
+      apt:
+        name: "net-tools"
+        state: present
+      become: yes
