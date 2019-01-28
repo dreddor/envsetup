@@ -58,6 +58,7 @@
         repo: "https://github.com/greenplum-db/gpdb"
         dest: "{{ lookup('env','HOME') }}/workspace/gpdb"
         remote: origin
+        update: no
     - git_config:
         name: user.email
         repo: "{{ lookup('env','HOME') }}/workspace/gpdb"
