@@ -59,3 +59,6 @@ autocmd FileType c setlocal foldmethod=syntax
 if exists("&colorcolumn")
     set colorcolumn=79
 endif
+
+" Set the viminfo to allow me to yank more than 50 lines of text
+set viminfo-=<50,s10
