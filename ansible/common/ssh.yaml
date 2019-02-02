@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Create the .ssh directory
+      file:
+        path: "{{ lookup('env','HOME') }}/.ssh"
+        state: directory
+        mode: 0700
+        owner: "{{lookup ('env', 'USER') }}"
+        group: "{{lookup ('env', 'USER') }}"
+    - name: Install the .ssh/config file in the user's home folder
+      copy:
+        src: "{{lookup ('env', 'HOME')}}/deployments/envsetup/ssh/config"
+        dest: "{{lookup ('env', 'HOME')}}/.ssh/config"
+        mode: 0600
+        owner: "{{lookup ('env', 'USER') }}"
+        group: "{{lookup ('env', 'USER') }}"
