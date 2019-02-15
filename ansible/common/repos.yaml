@@ -72,7 +72,7 @@
         mode: 0644
         owner: "{{lookup ('env', 'USER') }}"
         group: "{{lookup ('env', 'USER') }}"
-    - name: Cloning gpdb into ~/workspace
+    - name: Cloning gdbpg into ~/workspace
       git:
         repo: "https://github.com/tvesely/gdbpg"
         dest: "{{ lookup('env','HOME') }}/workspace/gdbpg"
