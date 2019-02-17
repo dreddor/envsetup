@@ -131,3 +131,10 @@
         name: "net-tools"
         state: present
       become: yes
+
+    # Requirements for NES development
+    - name: Install the go programming language package
+      apt:
+        name: "golang-go"
+        state: present
+      become: yes
