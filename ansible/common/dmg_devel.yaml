@@ -1,0 +1,29 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Create the gameboy directory
+      file:
+        path: "{{ lookup('env','HOME') }}/build/gameboy"
+        state: directory
+        mode: 0755
+        owner: "{{lookup ('env', 'USER') }}"
+        group: "{{lookup ('env', 'USER') }}"
+    - name: Create the tools directory
+      file:
+        path: "{{ lookup('env','HOME') }}/build/gameboy/tools"
+        state: directory
+        mode: 0755
+        owner: "{{lookup ('env', 'USER') }}"
+        group: "{{lookup ('env', 'USER') }}"
+
+    - name: Cloning rgbds into ~/build/gameboy/tools
+      git:
+        repo: "https://github.com/rednex/rgbds.git"
+        dest: "{{ lookup('env','HOME') }}/build/gameboy/tools/rgbds"
+        remote: origin
+        update: no
+    - name: Build rgbds
+      command: "make -j8"
+      args:
+        chdir: "{{ lookup('env','HOME') }}/build/gameboy/tools/rgbds"
+        creates: "{{ lookup('env','HOME') }}/build/gameboy/tools/rgbds/rgbasm"
