@@ -1,0 +1,2 @@
+# Use the Windows docker daemon when using WSL
+export DOCKER_HOST=tcp://localhost:2375
