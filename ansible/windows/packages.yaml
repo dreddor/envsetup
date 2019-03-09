@@ -13,3 +13,43 @@
       win_chocolatey:
         name: docker-desktop
         state: present
+    - name: ensure clion is installed
+      win_chocolatey:
+        name: clion-ide
+        state: present
+    - name: ensure goland is installed
+      win_chocolatey:
+        name: goland
+        state: present
+    - name: ensure datagrip is installed
+      win_chocolatey:
+        name: datagrip
+        state: present
+    - name: ensure vscode is installed
+      win_chocolatey:
+        name: vscode
+        state: present
+    - name: ensure notepad++ is installed
+      win_chocolatey:
+        name: notepadplusplus
+        state: present
+    - name: ensure sysinternals is installed
+      win_chocolatey:
+        name: sysinternals
+        state: present
+    - name: ensure process explorer is installed
+      win_chocolatey:
+        name: procexp
+        state: present
+    - name: ensure wireshark is installed
+      win_chocolatey:
+        name: wireshark
+        state: present
+    - name: ensure steam is installed
+      win_chocolatey:
+        name: steam
+        state: present
+    - name: ensure slack is installed
+      win_chocolatey:
+        name: slack
+        state: present
