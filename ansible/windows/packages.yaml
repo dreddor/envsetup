@@ -1,0 +1,15 @@
+---
+- hosts: windows
+  tasks:
+    - name: ensure 7-Zip is installed
+      win_chocolatey:
+        name: 7zip
+        state: present
+    - name: ensure Firefox is installed
+      win_chocolatey:
+        name: firefox
+        state: present
+    - name: ensure docker-desktop is installed
+      win_chocolatey:
+        name: docker-desktop
+        state: present
