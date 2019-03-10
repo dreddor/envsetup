@@ -53,3 +53,7 @@
       win_chocolatey:
         name: slack
         state: present
+    - name: ensure java runtime is installed
+      win_chocolatey:
+        name: javaruntime
+        state: present
