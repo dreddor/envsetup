@@ -50,6 +50,9 @@ autocmd FileType html,xhtml,xml,css setlocal expandtab shiftwidth=2 tabstop=2 so
 autocmd FileType python setlocal foldmethod=indent
 autocmd FileType python setlocal list
 
+" SQL
+autocmd FileType sql setlocal list
+
 " Code folding for c:
 autocmd FileType c setlocal foldmethod=syntax
 
