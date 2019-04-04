@@ -65,3 +65,6 @@ endif
 
 " Set the viminfo to allow me to yank more than 50 lines of text
 set viminfo-=<50,s10
+
+" Do not fix the end of the file- necessary for binary file editing
+set nofixendofline
