@@ -57,3 +57,7 @@
       win_chocolatey:
         name: javaruntime
         state: present
+    - name: Upgrade installed packages
+      win_chocolatey:
+        name: all
+        state: latest
