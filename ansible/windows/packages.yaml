@@ -57,6 +57,10 @@
       win_chocolatey:
         name: javaruntime
         state: present
+    - name: ensure vlc is installed
+      win_chocolatey:
+        name: vlc
+        state: present
     - name: Upgrade installed packages
       win_chocolatey:
         name: all
