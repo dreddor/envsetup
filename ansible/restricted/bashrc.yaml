@@ -1,0 +1,8 @@
+- hosts: localhost
+  tasks:
+  - name: Add restricted bashrc customizations
+    blockinfile:
+      dest: "{{ lookup('env','HOME') }}/.bashrc"
+      block: "{{ lookup('file', '~/deployments/envsetup/bashrc/bashrc.restricted') }}"
+      marker: "# {mark} ANSIBLE MANAGED BLOCK BASHRC RESTRICTED"
+      create: yes

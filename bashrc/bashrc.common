@@ -17,7 +17,3 @@ fi
 if [ -d $HOME/bin ]; then
     export PATH=$HOME/bin:$PATH
 fi
-
-if [ -f ${HOME}/deployments/credstore/credstore.bash ]; then
-	source ${HOME}/deployments/credstore/credstore.bash
-fi
