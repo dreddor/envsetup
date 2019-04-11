@@ -1,10 +1,15 @@
 .PHONEY: windows_host windows ubuntu1804 restricted
 
+ifdef KEEFILE
+RESTRICTED_TARGETS = restricted
+RESTRICTED_TARGETS_WINDOWS = restricted-windows
+endif
+
 CREDSTORE_PATH = ../credstore
 
-windows_host: windows ubuntu_host
+windows_host: windows $(RESTRICTED_TARGETS_WINDOWS) ubuntu_host
 
-ubuntu_host: ubuntu1804 common
+ubuntu_host: ubuntu1804 $(RESTRICTED_TARGETS) common
 
 ubuntu1804:
 	ansible-playbook ansible/ubuntu1804/*.yaml
