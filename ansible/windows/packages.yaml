@@ -61,6 +61,10 @@
       win_chocolatey:
         name: vlc
         state: present
+    - name: ensure procmon is installed
+      win_chocolatey:
+        name: procmon
+        state: present
     - name: Upgrade installed packages
       win_chocolatey:
         name: all
