@@ -1,6 +1,8 @@
 .PHONEY: windows_host windows ubuntu1804 restricted
 
-windows_host: windows ubuntu1804 common
+windows_host: windows ubuntu_host
+
+ubuntu_host: ubuntu1804 common
 
 ubuntu1804:
 	ansible-playbook ansible/ubuntu1804/*.yaml
