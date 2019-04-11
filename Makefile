@@ -29,6 +29,7 @@ restricted:
 	$(CREDSTORE_PATH)/credhelper.sh passgetattach "web/dreddor.net" bashrc.restricted > bashrc/bashrc.restricted
 	ansible-playbook ansible/restricted/bashrc.yaml
 	ansible-playbook ansible/restricted/repos.yaml
+	ansible-playbook ansible/restricted/ssh.yaml
 
 clean:
 	rm -r royalts
