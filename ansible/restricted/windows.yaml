@@ -1,0 +1,11 @@
+---
+- hosts: windows
+  tasks:
+    - name: Ensure Royal TS v5 is installed
+      win_chocolatey:
+        name: royalts-v5
+        state: latest
+    - name: Install Royal TS v5 license
+      win_copy:
+        src: "{{lookup ('env', 'HOME')}}/deployments/envsetup/royalts/code4ward.RoyalTS.Lic.V5.xml"
+        dest: "{{ ansible_facts['env']['APPDATA'] }}/code4ward/code4ward.RoyalTS.Lic.V5.xml"
