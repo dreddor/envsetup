@@ -33,12 +33,6 @@
         name: "vim"
         state: present
       become: yes
-    # Requirement for credstore to work
-    - name: Install kpcli
-      apt:
-        name: "kpcli"
-        state: present
-      become: yes
 
     # Required to build gpdb
     - name: Install zlib dev
