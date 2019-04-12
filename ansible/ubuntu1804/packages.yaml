@@ -126,7 +126,7 @@
         state: present
       become: yes
 
-    # Requirements for NES development
+    # Requirements for go development
     - name: Install the go programming language package
       apt:
         name: "golang-go"
