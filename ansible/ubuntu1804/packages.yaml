@@ -139,15 +139,3 @@
         state: present
       become: yes
 
-    # Requirements for gameboy development
-    - name: Install the libpng development package
-      apt:
-        name: "libpng-dev"
-        state: present
-      become: yes
-    # Requirements for gameboy development
-    - name: Install the sdl2 development package
-      apt:
-        name: "libsdl2-dev"
-        state: present
-      become: yes
