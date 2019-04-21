@@ -1,3 +1,5 @@
 # Use the Windows docker daemon when using WSL
 export DOCKER_HOST=tcp://localhost:2375
 export DISPLAY=127.0.0.1:0.0
+# Use Windows vagrant
+export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"

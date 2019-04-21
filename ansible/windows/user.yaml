@@ -1,0 +1,9 @@
+---
+- hosts: windows
+  tasks:
+    - name: Add a user {{ ansible_facts['env']['USERNAME'] }} to Hyper-V Administrators group
+      win_group_membership:
+        name: Hyper-V Administrators
+        members:
+          - "{{ ansible_facts['env']['USERNAME'] }}"
+        state: present
