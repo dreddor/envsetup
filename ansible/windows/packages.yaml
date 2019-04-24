@@ -70,3 +70,7 @@
         name: vagrant
         state: present
         version: 2.2.4
+    - name: ensure discord is installed
+      win_chocolatey:
+        name: discord
+        state: latest
