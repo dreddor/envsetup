@@ -17,3 +17,16 @@ fi
 if [ -d $HOME/bin ]; then
     export PATH=$HOME/bin:$PATH
 fi
+
+POWERLINE_PACKAGE_LOCATION=$(pip show powerline-status | perl -lane 'next unless /Location:\s+(.*)$/; print $1')
+
+if [ "${POWERLINE_PACKAGE_LOCATION}" != "" ]; then
+    if [ -d "${POWERLINE_PACKAGE_LOCATION}/powerline" ]; then
+        export POWERLINE_PATH=${POWERLINE_PACKAGE_LOCATION}/powerline
+
+        powerline-daemon -q
+        POWERLINE_BASH_CONTINUATION=1
+        POWERLINE_BASH_SELECT=1
+        source ${POWERLINE_PATH}/bindings/bash/powerline.sh
+    fi
+fi

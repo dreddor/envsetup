@@ -1,6 +1,8 @@
 ---
 
 - hosts: localhost
+  vars_files:
+    - '{{userconfig}}'
   tasks:
     # Fun to have packages
     - name: Install docker
@@ -138,3 +140,10 @@
         state: present
       become: yes
 
+    # For powerline (only makes sense on full linux distribution)
+    - name: Install the fonts-powerline package
+      apt:
+        name: "fonts-powerline"
+        state: present
+      become: yes
+      when: is_wsl == False
