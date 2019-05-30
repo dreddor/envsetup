@@ -5,3 +5,5 @@ git_email: dreddor@dreddor.net
 
 # Running in WSL?
 is_wsl: no
+# Running in Vagrant?
+is_vagrant: no
