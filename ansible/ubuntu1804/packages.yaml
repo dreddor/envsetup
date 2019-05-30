@@ -10,7 +10,6 @@
         name: "docker.io"
         state: present
       become: yes
-      when: is_vagrant == False
     - name: Install vagrant 2.2.4
       apt:
         deb: https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.deb
