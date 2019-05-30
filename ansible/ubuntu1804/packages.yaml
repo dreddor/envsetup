@@ -147,3 +147,10 @@
         state: present
       become: yes
       when: is_wsl == False
+
+    # Required to install Terraform
+    - name: Install the unzip package
+      apt:
+        name: "unzip"
+        state: present
+      become: yes
