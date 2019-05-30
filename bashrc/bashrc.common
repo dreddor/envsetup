@@ -18,6 +18,10 @@ if [ -d $HOME/bin ]; then
     export PATH=$HOME/bin:$PATH
 fi
 
+if [ -d $HOME/.local/bin ]; then
+    export PATH=$HOME/.local/bin:$PATH
+fi
+
 POWERLINE_PACKAGE_LOCATION=$(pip show powerline-status | perl -lane 'next unless /Location:\s+(.*)$/; print $1')
 
 if [ "${POWERLINE_PACKAGE_LOCATION}" != "" ]; then
