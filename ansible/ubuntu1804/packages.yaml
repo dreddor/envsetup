@@ -156,6 +156,13 @@
         state: present
       become: yes
 
+    # Required for X11 forwarding to work with ssh
+    - name: Install the xauth package
+      apt:
+        name: "xauth"
+        state: present
+      become: yes
+
     # Snap installs aren't available on WSL (yet)
     - name: Install the clion package
       snap:

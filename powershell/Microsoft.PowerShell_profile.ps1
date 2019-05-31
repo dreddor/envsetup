@@ -23,3 +23,7 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 New-Alias which Get-Command
+
+# Set X11 DISPLAY variable for ssh Xforwarding
+Set-Item -Path Env:DISPLAY -Value "localhost:0"
+
