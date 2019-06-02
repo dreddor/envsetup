@@ -49,6 +49,31 @@
         repo: "{{ lookup('env','HOME') }}/workspace/gphelpers"
         scope: local
         value: 'tvesely@pivotal.io'
+    - name: Cloning gp-xerces into ~/workspace
+      git:
+        repo: "https://github.com/greenplum-db/gp-xerces"
+        dest: "{{ lookup('env','HOME') }}/workspace/gp-xerces"
+        remote: origin
+    - name: Create gp-xerces build directory
+      file:
+        path: "{{ lookup('env','HOME') }}/workspace/gp-xerces/build"
+        state: directory
+        mode: 0755
+    - name: Configure gp-xerces
+      command: "./configure --prefix=/usr/local"
+      args:
+        chdir: "{{ lookup('env','HOME') }}/workspace/gp-xerces/build"
+        creates: "{{ lookup('env','HOME') }}/workspace/gp-xerces/build/Makefile"
+    - name: Build gp-xerces
+      command: "make -j8"
+      args:
+        chdir: "{{ lookup('env','HOME') }}/workspace/gp-xerces/build"
+    - name: Install gp-xerces
+      command: "make install"
+      args:
+        chdir: "{{ lookup('env','HOME') }}/workspace/gp-xerces/build"
+        creates: "/usr/local/lib/libxerces-c-3.1.so"
+      become: yes
     - name: Cloning gporca into ~/workspace
       git:
         repo: "https://github.com/greenplum-db/gporca"
