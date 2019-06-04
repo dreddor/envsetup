@@ -41,6 +41,11 @@
         name: "vim"
         state: present
       become: yes
+    - name: Install tmux
+      apt:
+        name: tmux
+        state: present
+      become: yes
 
     # Required to build gpdb
     - name: Install zlib dev
