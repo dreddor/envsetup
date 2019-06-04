@@ -60,7 +60,7 @@
         state: directory
         mode: 0755
     - name: Configure gp-xerces
-      command: "./configure --prefix=/usr/local"
+      command: "../configure --prefix=/usr/local"
       args:
         chdir: "{{ lookup('env','HOME') }}/workspace/gp-xerces/build"
         creates: "{{ lookup('env','HOME') }}/workspace/gp-xerces/build/Makefile"
