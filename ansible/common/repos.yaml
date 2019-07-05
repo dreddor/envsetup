@@ -84,6 +84,20 @@
         repo: "{{ lookup('env','HOME') }}/workspace/gporca"
         scope: local
         value: 'tvesely@pivotal.io'
+    - name: Create gporca build directory
+      file:
+        path: "{{ lookup('env','HOME') }}/workspace/gporca/build"
+        state: directory
+        mode: 0755
+    - name: Run cmake for gporca
+      command: "cmake ../"
+      args:
+        chdir: "{{ lookup('env','HOME') }}/workspace/gporca/build"
+        creates: "{{ lookup('env','HOME') }}/workspace/gporca/build/Makefile"
+    - name: Build and install gporca
+      command: "make -j8 install"
+      args:
+        chdir: "{{ lookup('env','HOME') }}/workspace/gporca/build"
     - name: Cloning postgres into ~/workspace
       git:
         repo: "https://github.com/postgres/postgres"
