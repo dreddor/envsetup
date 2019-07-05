@@ -98,6 +98,9 @@
       command: "make -j8 install"
       args:
         chdir: "{{ lookup('env','HOME') }}/workspace/gporca/build"
+    - name: load gporca and gp-xerces library using ldconfig
+      command: "ldconfig"
+      become: yes
     - name: Cloning postgres into ~/workspace
       git:
         repo: "https://github.com/postgres/postgres"
