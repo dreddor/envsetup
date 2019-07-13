@@ -1,6 +1,0 @@
----
-- hosts: localhost
-  tasks:
-    - name: Install Powerline
-      pip:
-        name: powerline-status

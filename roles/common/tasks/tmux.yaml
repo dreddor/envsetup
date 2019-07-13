@@ -1,0 +1,8 @@
+---
+- name: Install the .tmux.conf to the user's home folder
+  copy:
+    src: "{{lookup ('env', 'HOME')}}/deployments/envsetup/roles/common/files/tmux.conf"
+    dest: "{{lookup ('env', 'HOME')}}/.tmux.conf"
+    mode: 0755
+    owner: "{{lookup ('env', 'USER') }}"
+    group: "{{lookup ('env', 'USER') }}"

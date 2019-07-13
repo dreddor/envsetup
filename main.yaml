@@ -1,0 +1,21 @@
+---
+- name: setup a Linux environment
+  hosts: localhost
+  gather_facts: yes
+  vars:
+    is_wsl: False
+    is_vagrant: False
+  vars_files:
+    - "{{userconfig}}"
+
+  pre_tasks:
+    - name: mandatory variables
+      assert:
+        that:
+          - git_user is defined
+          - git_email is defined
+
+  roles:
+    - common
+
+- import_playbook: windows.yaml

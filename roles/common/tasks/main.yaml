@@ -1,0 +1,12 @@
+---
+- include: packages_ubuntu1804.yaml
+  when:
+    - ansible_facts['distribution'] == "Ubuntu"
+    - ansible_facts['distribution_version'] == "18.04"
+- include: bashrc.yaml
+- include: bashrc_windows.yaml
+  when: is_wsl == True
+- include: git.yaml
+- include: powerline.yaml
+- include: tmux.yaml
+- include: vim.yaml

@@ -1,14 +1,6 @@
 ---
 - hosts: windows
   tasks:
-    - name: ensure 7-Zip is installed
-      win_chocolatey:
-        name: 7zip
-        state: latest
-    - name: ensure Firefox is installed
-      win_chocolatey:
-        name: firefox
-        state: latest
     - name: ensure docker-desktop is installed
       win_chocolatey:
         name: docker-desktop
@@ -29,48 +21,16 @@
       win_chocolatey:
         name: vscode
         state: latest
-    - name: ensure notepad++ is installed
-      win_chocolatey:
-        name: notepadplusplus
-        state: latest
-    - name: ensure sysinternals is installed
-      win_chocolatey:
-        name: sysinternals
-        state: latest
-    - name: ensure process explorer is installed
-      win_chocolatey:
-        name: procexp
-        state: latest
     - name: ensure wireshark is installed
       win_chocolatey:
         name: wireshark
-        state: latest
-    - name: ensure steam is installed
-      win_chocolatey:
-        name: steam
         state: latest
     - name: ensure slack is installed
       win_chocolatey:
         name: slack
         state: latest 
-    - name: ensure java runtime is installed
-      win_chocolatey:
-        name: javaruntime
-        state: latest 
-    - name: ensure vlc is installed
-      win_chocolatey:
-        name: vlc
-        state: latest
-    - name: ensure procmon is installed
-      win_chocolatey:
-        name: procmon
-        state: latest
     - name: ensure vagrant 2.2.4 is installed
       win_chocolatey:
         name: vagrant
         state: present
         version: 2.2.4
-    - name: ensure discord is installed
-      win_chocolatey:
-        name: discord
-        state: latest

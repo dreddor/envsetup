@@ -1,0 +1,72 @@
+---
+# Fun to have packages
+- name: Install emacs
+  apt:
+    name: "emacs-nox"
+    state: present
+  become: yes
+- name: Install git
+  apt:
+    name: "git"
+    state: present
+  become: yes
+- name: Install jq
+  apt:
+    name: "jq"
+    state: present
+  become: yes
+- name: Install the Silver Searcher
+  apt:
+    name: "silversearcher-ag"
+    state: present
+  become: yes
+- name: Install vim
+  apt:
+    name: "vim"
+    state: present
+  become: yes
+- name: Install tmux
+  apt:
+    name: tmux
+    state: present
+  become: yes
+
+# For powerline (only makes sense on full linux distribution)
+- name: Install the fonts-powerline package
+  apt:
+    name: "fonts-powerline"
+    state: present
+  become: yes
+  when: is_wsl == False and is_vagrant == False
+
+# Also required to install Terraform
+- name: Install the unzip package
+  apt:
+    name: "unzip"
+    state: present
+  become: yes
+
+# == X11 Specific Packages ==
+#
+# Required for X11 forwarding to work with ssh
+- name: Install the xauth package
+  apt:
+    name: "xauth"
+    state: present
+  become: yes
+# Required for X11 forwarding in Clion
+- name: Install the libxi6 package
+  apt:
+    name: "libxi6"
+    state: present
+  become: yes
+- name: Install the libxrender1 package
+  apt:
+    name: "libxrender1"
+    state: present
+  become: yes
+- name: Install the libxtst6 package
+  apt:
+    name: "libxtst6"
+    state: present
+  become: yes

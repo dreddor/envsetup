@@ -1,0 +1,54 @@
+---
+- name: Create the vim directory
+  file:
+    path: "{{ lookup('env','HOME') }}/.vim"
+    state: directory
+    mode: 0755
+    owner: "{{lookup ('env', 'USER') }}"
+    group: "{{lookup ('env', 'USER') }}"
+- name: Create the autoload directory
+  file:
+    path: "{{ lookup('env','HOME') }}/.vim/autoload"
+    state: directory
+    mode: 0755
+    owner: "{{lookup ('env', 'USER') }}"
+    group: "{{lookup ('env', 'USER') }}"
+- name: Create the bundle directory
+  file:
+    path: "{{ lookup('env','HOME') }}/.vim/bundle"
+    state: directory
+    mode: 0755
+    owner: "{{lookup ('env', 'USER') }}"
+    group: "{{lookup ('env', 'USER') }}"
+- name: Create the colors directory
+  file:
+    path: "{{ lookup('env','HOME') }}/.vim/colors"
+    state: directory
+    mode: 0755
+    owner: "{{lookup ('env', 'USER') }}"
+    group: "{{lookup ('env', 'USER') }}"
+- name: "Install pathogen"
+  get_url:
+    url: https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+    dest: "{{ lookup('env','HOME') }}/.vim/autoload"
+- name: Install the .vimrc to the user's home folder
+  copy:
+    src: vimrc
+    dest: "{{lookup ('env', 'HOME')}}/.vimrc"
+    mode: 0755
+    owner: "{{lookup ('env', 'USER') }}"
+    group: "{{lookup ('env', 'USER') }}"
+- name: "Install plugins"
+  git:
+    repo: "{{ item.repo }}"
+    version: "{{ item.version | default('master') }}"
+    dest: "/{{ lookup('env','HOME') }}/.vim/bundle/{{ item.name | default(item.repo.split('/')[-1][:-4]) }}"
+    depth: 1
+  with_items:
+  - repo: "https://github.com/tomasr/molokai.git"
+    name: molokai ## default: vim-elixir
+    version: master ## default: master
+  - repo: "https://github.com/sickill/vim-monokai"
+    name: vim-monokai ## default: vim-elixir
+  - repo: "https://github.com/PProvost/vim-ps1.git"
+    name: vim-ps1

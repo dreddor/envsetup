@@ -1,8 +1,0 @@
-- hosts: localhost
-  tasks:
-  - name: Add WSL specific bashrc customizations
-    blockinfile:
-      dest: "{{ lookup('env','HOME') }}/.bashrc"
-      block: "{{ lookup('file', '~/deployments/envsetup/bashrc/bashrc.windows') }}"
-      marker: "# {mark} ANSIBLE MANAGED BLOCK BASHRC WINDOWS"
-      create: yes

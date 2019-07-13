@@ -1,0 +1,16 @@
+---
+- name: Set git core.editor to vim
+  git_config:
+    name: core.editor
+    scope: global
+    value: vim
+- name: Set git user.email to {{git_email}}
+  git_config:
+    name: user.email
+    scope: global
+    value: '{{git_email}}'
+- name: Set git user.name to {{git_user}}
+  git_config:
+    name: user.name
+    scope: global
+    value: '{{git_user}}'
