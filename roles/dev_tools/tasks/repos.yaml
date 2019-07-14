@@ -1,0 +1,11 @@
+---
+- name: Cloning bpftrace into ~/build
+  git:
+    repo: "https://github.com/iovisor/bpftrace"
+    dest: "{{ lookup('env','HOME') }}/build/bpftrace"
+    remote: origin
+- name: Cloning bcc into ~/build
+  git:
+    repo: "https://github.com/iovisor/bcc"
+    dest: "{{ lookup('env','HOME') }}/build/bcc"
+    remote: origin

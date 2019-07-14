@@ -17,5 +17,7 @@
 
   roles:
     - common
+    - dev_tools
 
 - import_playbook: windows.yaml
+  when: is_wsl == True

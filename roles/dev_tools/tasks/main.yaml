@@ -1,0 +1,18 @@
+---
+- include: packages_ubuntu1804.yaml
+  become: yes
+  when:
+    - ansible_facts['distribution'] == "Ubuntu"
+    - ansible_facts['distribution_version'] == "18.04"
+- include: ptrace_ubuntu1804.yaml
+  when:
+    - ansible_facts['distribution'] == "Ubuntu"
+    - ansible_facts['distribution_version'] == "18.04"
+- include: clion.yaml
+  when: is_wsl == True or is_vagrant == True
+- include: fly.yaml
+- include: golang.yaml
+- include: repos.yaml
+- include: linode.yaml
+- include: pivnet-cli.yaml
+- include: terraform.yaml

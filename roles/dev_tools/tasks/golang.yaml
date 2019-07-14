@@ -1,0 +1,21 @@
+---
+- name: Create the build directory
+  file:
+    path: "{{ lookup('env','HOME') }}/build"
+    state: directory
+    mode: 0755
+    owner: "{{lookup ('env', 'USER') }}"
+    group: "{{lookup ('env', 'USER') }}"
+- name: Create the golang directory
+  file:
+    path: "{{ lookup('env','HOME') }}/build/golang"
+    state: directory
+    mode: 0755
+    owner: "{{lookup ('env', 'USER') }}"
+    group: "{{lookup ('env', 'USER') }}"
+- name: Add golang bashrc customizations
+  blockinfile:
+    dest: "{{ lookup('env','HOME') }}/.bashrc"
+    block: "{{ lookup('file', '~/deployments/envsetup/roles/dev_tools/files/bashrc.golang') }}"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK BASHRC GOLANG"
+    create: yes

@@ -5,18 +5,6 @@
     - '{{userconfig}}'
   tasks:
     # Fun to have packages
-    - name: Install docker
-      apt:
-        name: "docker.io"
-        state: present
-      become: yes
-    - name: Install vagrant 2.2.4
-      apt:
-        deb: https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.deb
-        state: present
-      become: yes
-      when: is_vagrant == False
-
     # Required to build gpdb
     - name: Install zlib dev
       apt:
@@ -108,19 +96,3 @@
         name: "net-tools"
         state: present
       become: yes
-
-    # Requirements for go development
-    - name: Install the go programming language package
-      apt:
-        name: "golang-go"
-        state: present
-      become: yes
-
-    # Snap installs aren't available on WSL (yet)
-    - name: Install the clion package
-      snap:
-        name: "clion"
-        state: present
-        classic: yes
-      become: yes
-      when: is_wsl == False

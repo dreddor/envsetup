@@ -1,0 +1,22 @@
+- name: Install docker
+  apt:
+    name: "docker.io"
+    state: present
+- name: Install vagrant 2.2.4
+  apt:
+    deb: https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.deb
+    state: present
+  when: is_vagrant == False
+# Requirements for go development
+- name: Install the go programming language package
+  apt:
+    name: "golang-go"
+    state: present
+
+# Snap installs aren't available on WSL (yet)
+- name: Install the clion package
+  snap:
+    name: "clion"
+    state: present
+    classic: yes
+  when: is_wsl == False

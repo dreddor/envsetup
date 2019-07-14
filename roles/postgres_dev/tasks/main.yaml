@@ -1,0 +1,9 @@
+---
+- include: packages_ubuntu1804.yaml
+  when:
+    - ansible_facts['distribution'] == "Ubuntu"
+    - ansible_facts['distribution_version'] == "18.04"
+- include: user.yaml
+  become: yes
+- include: repos.yaml
+- include: gdb.yaml

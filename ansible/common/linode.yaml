@@ -1,6 +1,0 @@
----
-- hosts: localhost
-  tasks:
-    - name: Install Linode CLI
-      pip:
-        name: linode-cli
