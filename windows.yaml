@@ -16,3 +16,4 @@
 
   roles:
     - windows_common
+    - windows_dev_tools
