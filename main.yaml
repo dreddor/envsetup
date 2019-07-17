@@ -18,6 +18,7 @@
   roles:
     - common
     - dev_tools
+    - postgres_dev
 
 - import_playbook: windows.yaml
   when: is_wsl == True

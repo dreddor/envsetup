@@ -1,0 +1,8 @@
+---
+- name: Install the .gdbinit to the user's home folder
+  copy:
+    src: gdbinit
+    dest: "{{lookup ('env', 'HOME')}}/.gdbinit"
+    mode: 0755
+    owner: "{{lookup ('env', 'USER') }}"
+    group: "{{lookup ('env', 'USER') }}"
