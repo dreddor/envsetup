@@ -7,6 +7,8 @@
     is_vagrant: False
   vars_files:
     - "{{userconfig}}"
+  tags:
+    - linux
 
   pre_tasks:
     - name: mandatory variables
@@ -22,3 +24,5 @@
 
 - import_playbook: windows.yaml
   when: is_wsl == True
+  tags:
+    - windows

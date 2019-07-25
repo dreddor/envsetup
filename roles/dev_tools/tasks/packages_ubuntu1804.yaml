@@ -2,11 +2,13 @@
   apt:
     name: "docker.io"
     state: present
-- name: Install vagrant 2.2.4
+- name: Install vagrant 2.2.5
   apt:
-    deb: https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.deb
+    deb: https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb
     state: present
   when: is_vagrant == False
+  tags:
+    - vagrant
 # Requirements for go development
 - name: Install the go programming language package
   apt:
