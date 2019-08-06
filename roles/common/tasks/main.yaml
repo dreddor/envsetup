@@ -9,4 +9,6 @@
 - include: git.yaml
 - include: powerline.yaml
 - include: tmux.yaml
+  tags:
+    - tmux
 - include: vim.yaml
