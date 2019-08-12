@@ -112,3 +112,24 @@
     mode: 0644
     owner: "{{lookup ('env', 'USER') }}"
     group: "{{lookup ('env', 'USER') }}"
+- name: Cloning tpch-dbgen into ~/workspace
+  git:
+    repo: "https://github.com/electrum/tpch-dbgen"
+    dest: "{{ lookup('env','HOME') }}/workspace/tpch-dbgen"
+    remote: origin
+  tags:
+      - tpch-dbgen
+- name: Build and install tpch-dbgen
+  command: "make -j8"
+  args:
+    chdir: "{{ lookup('env','HOME') }}/workspace/tpch-dbgen"
+  tags:
+      - tpch-dbgen
+- name: Run tpch data generation
+  command: "./dbgen -T L -s {{tpch_datagen_scale}} -f"
+  args:
+    chdir: "{{ lookup('env','HOME') }}/workspace/tpch-dbgen"
+  tags:
+      - tpch-dbgen
+  when:
+    - run_tpch_datagen == True

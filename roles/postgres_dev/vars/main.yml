@@ -1,0 +1,3 @@
+---
+run_tpch_datagen: False
+tpch_datagen_scale: 1
