@@ -89,3 +89,11 @@
     name: "net-tools"
     state: present
   become: yes
+# Needed to compile postgres with --with-lz4 for the zedstore branch
+- name: Install the lz4 development package
+  apt:
+    name: "liblz4-dev"
+    state: present
+  become: yes
+  tags:
+    - postgres
