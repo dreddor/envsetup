@@ -97,3 +97,18 @@
   become: yes
   tags:
     - postgres
+# The next two packages are needed for postgres docs generation
+- name: Install the libxml2-utils package
+  apt:
+    name: "libxml2-utils"
+    state: present
+  become: yes
+  tags:
+    - postgres
+- name: Install the xsltproc package
+  apt:
+    name: "xsltproc"
+    state: present
+  become: yes
+  tags:
+    - postgres
