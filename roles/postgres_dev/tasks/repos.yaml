@@ -77,6 +77,7 @@
     repo: "https://github.com/greenplum-db/gporca"
     dest: "{{ lookup('env','HOME') }}/workspace/gporca"
     remote: origin
+    update: no
 - git_config:
     name: user.email
     repo: "{{ lookup('env','HOME') }}/workspace/gporca"
