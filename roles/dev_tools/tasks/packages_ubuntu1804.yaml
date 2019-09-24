@@ -15,6 +15,12 @@
     name: "golang-go"
     state: present
 
+# Development utilities
+- name: Install valgrind
+  apt:
+    name: "valgrind"
+    state: present
+
 # Snap installs aren't available on WSL (yet)
 - name: Install the clion package
   snap:
