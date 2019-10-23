@@ -1,72 +1,72 @@
 ---
 - name: Create the deployments directory
   file:
-    path: "{{ lookup('env','HOME') }}/deployments"
+    path: "{{ ansible_env.HOME }}/deployments"
     state: directory
     mode: 0755
 - name: Create the workspace directory
   file:
-    path: "{{ lookup('env','HOME') }}/workspace"
+    path: "{{ ansible_env.HOME }}/workspace"
     state: directory
 - name: Cloning gpdb into ~/workspace
   git:
     repo: "https://github.com/greenplum-db/gpdb"
-    dest: "{{ lookup('env','HOME') }}/workspace/gpdb"
+    dest: "{{ ansible_env.HOME }}/workspace/gpdb"
     remote: origin
     update: no
 - git_config:
     name: user.email
-    repo: "{{ lookup('env','HOME') }}/workspace/gpdb"
+    repo: "{{ ansible_env.HOME }}/workspace/gpdb"
     scope: local
     value: 'tvesely@pivotal.io'
 # Allows CLion to intraspect the gpdb project
 - name: Add a CMakeLists.txt file to the gpdb repo
   copy:
     src: CMakeLists.gpdb
-    dest: "{{lookup ('env', 'HOME')}}/workspace/gpdb/CMakeLists.txt"
+    dest: "{{ansible_env.HOME}}/workspace/gpdb/CMakeLists.txt"
     mode: 0644
-    owner: "{{lookup ('env', 'USER') }}"
-    group: "{{lookup ('env', 'USER') }}"
+    owner: "{{ansible_env.USER }}"
+    group: "{{ansible_env.USER }}"
 - name: Cloning gdbpg into ~/workspace
   git:
     repo: "https://github.com/tvesely/gdbpg"
-    dest: "{{ lookup('env','HOME') }}/workspace/gdbpg"
+    dest: "{{ ansible_env.HOME }}/workspace/gdbpg"
     remote: origin
 - git_config:
     name: user.email
-    repo: "{{ lookup('env','HOME') }}/workspace/gdbpg"
+    repo: "{{ ansible_env.HOME }}/workspace/gdbpg"
     scope: local
     value: 'tvesely@pivotal.io'
 - name: Cloning gphelpers into ~/workspace
   git:
     repo: "https://github.com/tvesely/gphelpers"
-    dest: "{{ lookup('env','HOME') }}/workspace/gphelpers"
+    dest: "{{ ansible_env.HOME }}/workspace/gphelpers"
     remote: origin
 - git_config:
     name: user.email
-    repo: "{{ lookup('env','HOME') }}/workspace/gphelpers"
+    repo: "{{ ansible_env.HOME }}/workspace/gphelpers"
     scope: local
     value: 'tvesely@pivotal.io'
 - name: Cloning gp-xerces into ~/workspace
   git:
     repo: "https://github.com/greenplum-db/gp-xerces"
-    dest: "{{ lookup('env','HOME') }}/workspace/gp-xerces"
+    dest: "{{ ansible_env.HOME }}/workspace/gp-xerces"
     remote: origin
 - name: Cloning gporca into ~/workspace
   git:
     repo: "https://github.com/greenplum-db/gporca"
-    dest: "{{ lookup('env','HOME') }}/workspace/gporca"
+    dest: "{{ ansible_env.HOME }}/workspace/gporca"
     remote: origin
     update: no
 - git_config:
     name: user.email
-    repo: "{{ lookup('env','HOME') }}/workspace/gporca"
+    repo: "{{ ansible_env.HOME }}/workspace/gporca"
     scope: local
     value: 'tvesely@pivotal.io'
 - name: Cloning postgres into ~/workspace
   git:
     repo: "https://github.com/postgres/postgres"
-    dest: "{{ lookup('env','HOME') }}/workspace/postgres"
+    dest: "{{ ansible_env.HOME }}/workspace/postgres"
     remote: origin
     update: no
   tags:
@@ -75,29 +75,29 @@
 - name: Add a CMakeLists.txt file to the postgres repo
   copy:
     src: CMakeLists.postgres
-    dest: "{{lookup ('env', 'HOME')}}/workspace/postgres/CMakeLists.txt"
+    dest: "{{ansible_env.HOME}}/workspace/postgres/CMakeLists.txt"
     mode: 0644
-    owner: "{{lookup ('env', 'USER') }}"
-    group: "{{lookup ('env', 'USER') }}"
+    owner: "{{ansible_env.USER }}"
+    group: "{{ansible_env.USER }}"
   tags:
     -postgres
 - name: Cloning tpch-dbgen into ~/workspace
   git:
     repo: "https://github.com/electrum/tpch-dbgen"
-    dest: "{{ lookup('env','HOME') }}/workspace/tpch-dbgen"
+    dest: "{{ ansible_env.HOME }}/workspace/tpch-dbgen"
     remote: origin
   tags:
       - tpch-dbgen
 - name: Build and install tpch-dbgen
   command: "make -j8"
   args:
-    chdir: "{{ lookup('env','HOME') }}/workspace/tpch-dbgen"
+    chdir: "{{ ansible_env.HOME }}/workspace/tpch-dbgen"
   tags:
       - tpch-dbgen
 - name: Run tpch data generation
   command: "./dbgen -T L -s {{tpch_datagen_scale}} -f"
   args:
-    chdir: "{{ lookup('env','HOME') }}/workspace/tpch-dbgen"
+    chdir: "{{ ansible_env.HOME }}/workspace/tpch-dbgen"
   tags:
       - tpch-dbgen
   when:
@@ -105,7 +105,7 @@
 - name: Cloning pg_bsd_indent into ~/workspace
   git:
     repo: "https://git.postgresql.org/git/pg_bsd_indent"
-    dest: "{{ lookup('env','HOME') }}/workspace/pg_bsd_indent"
+    dest: "{{ ansible_env.HOME }}/workspace/pg_bsd_indent"
     remote: origin
   tags:
     - pg_indent

@@ -3,13 +3,10 @@
   get_url:
     url: https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip
     dest: /tmp/terraform_0.11.13_linux_amd64.zip
-- name: Extract Terraform CLI
+- name: Extract Terraform CLI to PATH
   unarchive:
+    remote_src: yes
     src: /tmp/terraform_0.11.13_linux_amd64.zip
-    dest: /tmp/
-- name: Install Terraform CLI in PATH
-  copy:
-    src: /tmp/terraform
-    dest: /usr/local/bin/terraform
+    dest: /usr/local/bin/
     mode: 0755
   become: yes

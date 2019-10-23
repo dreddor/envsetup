@@ -12,7 +12,7 @@
     validate: 'visudo -cf %s'
 - name: Add user
   user:
-    name: "{{lookup ('env', 'USER') }}"
+    name: "{{ansible_env.USER }}"
     shell: /bin/bash
     groups: wheel,docker
     append: yes
@@ -35,12 +35,12 @@
     path: "/usr/local/gpdb"
     state: directory
     mode: 0755
-    owner: "{{lookup ('env', 'USER') }}"
-    group: "{{lookup ('env', 'USER') }}"
+    owner: "{{ansible_env.USER }}"
+    group: "{{ansible_env.USER }}"
 - name: Create a directory for postgres installation
   file:
     path: "/usr/local/pgsql"
     state: directory
     mode: 0755
-    owner: "{{lookup ('env', 'USER') }}"
-    group: "{{lookup ('env', 'USER') }}"
+    owner: "{{ansible_env.USER }}"
+    group: "{{ansible_env.USER }}"

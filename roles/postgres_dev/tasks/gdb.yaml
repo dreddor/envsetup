@@ -2,7 +2,7 @@
 - name: Install the .gdbinit to the user's home folder
   copy:
     src: gdbinit
-    dest: "{{lookup ('env', 'HOME')}}/.gdbinit"
+    dest: "{{ansible_env.HOME}}/.gdbinit"
     mode: 0755
-    owner: "{{lookup ('env', 'USER') }}"
-    group: "{{lookup ('env', 'USER') }}"
+    owner: "{{ansible_env.USER }}"
+    group: "{{ansible_env.USER }}"

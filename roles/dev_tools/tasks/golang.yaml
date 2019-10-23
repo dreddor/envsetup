@@ -1,21 +1,21 @@
 ---
 - name: Create the build directory
   file:
-    path: "{{ lookup('env','HOME') }}/build"
+    path: "{{ ansible_env.HOME }}/build"
     state: directory
     mode: 0755
-    owner: "{{lookup ('env', 'USER') }}"
-    group: "{{lookup ('env', 'USER') }}"
+    owner: "{{ansible_env.USER }}"
+    group: "{{ansible_env.USER }}"
 - name: Create the golang directory
   file:
-    path: "{{ lookup('env','HOME') }}/build/golang"
+    path: "{{ ansible_env.HOME }}/build/golang"
     state: directory
     mode: 0755
-    owner: "{{lookup ('env', 'USER') }}"
-    group: "{{lookup ('env', 'USER') }}"
+    owner: "{{ansible_env.USER }}"
+    group: "{{ansible_env.USER }}"
 - name: Add golang bashrc customizations
   blockinfile:
-    dest: "{{ lookup('env','HOME') }}/.bashrc"
+    dest: "{{ ansible_env.HOME }}/.bashrc"
     block: "{{ lookup('file', '~/deployments/envsetup/roles/dev_tools/files/bashrc.golang') }}"
     marker: "# {mark} ANSIBLE MANAGED BLOCK BASHRC GOLANG"
     create: yes
