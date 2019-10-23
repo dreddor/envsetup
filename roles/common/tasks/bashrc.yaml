@@ -1,6 +1,6 @@
 - name: Add common bashrc customizations
   blockinfile:
-    dest: "{{ lookup('env','HOME') }}/.bashrc"
+    dest: "{{ ansible_env.HOME }}/.bashrc"
     block: "{{ lookup('file', '~/deployments/envsetup/roles/common/files/bashrc.common') }}"
     marker: "# {mark} ANSIBLE MANAGED BLOCK BASHRC COMMON"
     create: yes

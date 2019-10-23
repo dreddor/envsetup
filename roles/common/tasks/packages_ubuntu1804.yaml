@@ -1,4 +1,15 @@
 ---
+- name: Install aptitude
+  apt:
+    name: "aptitude"
+    state: present
+    update_cache: yes
+  become: yes
+- name: Install pip
+  apt:
+    name: "python3-pip"
+    state: present
+  become: yes
 # Fun to have packages
 - name: Install emacs
   apt:
