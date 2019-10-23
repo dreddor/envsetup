@@ -89,7 +89,7 @@
   tags:
       - tpch-dbgen
 - name: Build and install tpch-dbgen
-  command: "make -j8"
+  command: "make -j{{ansible_facts['processor_vcpus']}}"
   args:
     chdir: "{{ ansible_env.HOME }}/workspace/tpch-dbgen"
   tags:
