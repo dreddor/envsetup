@@ -1,0 +1,11 @@
+---
+- name: Build gpdb
+  hosts: localhost
+  vars:
+    greenplum_config: {}
+    orca_config: {}
+    xerces_config: {}
+  gather_facts: yes
+
+  roles:
+    - build_gpdb

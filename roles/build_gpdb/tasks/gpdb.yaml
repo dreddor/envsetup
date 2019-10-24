@@ -1,0 +1,25 @@
+---
+- set_fact:
+    _libxml_flag:  "{{ _greenplum_config.with_libxml | ternary('--with-libxml', '--without-libxml') }}"
+    _orca_flag:  "{{ _greenplum_config.enable_orca | ternary('--enable-orca', '--disable-orca') }}"
+    _gpcloud_flag: "{{ _greenplum_config.enable_gpcloud | ternary('--enable-gpcloud', '--disable-gpcloud') }}"
+    _zstd_flag:  "{{ _greenplum_config.enable_zstd | ternary('--enable-zstd', '--disable-zstd') }}"
+    _debug_flag: "{{ _greenplum_config.enable_debug | ternary('--enable-debug', '--disable-debug')}}"
+    _cassert_flag: "{{ _greenplum_config.enable_cassert | ternary('--enable-cassert', '--disable-cassert')}}"
+
+- name: Configure gpdb
+  command: ./configure {{ _libxml_flag }} {{ _orca_flag }} {{ _gpcloud_flag }} {{ _zstd_flag }} {{ _debug_flag }} {{ _cassert_flag }} -prefix={{ _greenplum_config.prefix }}
+  args:
+    chdir: "{{ _greenplum_config.repo_directory }}"
+  environment:
+    CFLAGS: "{{ _greenplum_config.cflags }}"
+
+- name: Clean gpdb
+  command: make clean
+  args:
+    chdir: "{{ _greenplum_config.repo_directory }}"
+
+- name: Install gpdb
+  command: make install -j{{ _greenplum_config.build_core_count}}
+  args:
+    chdir: "{{ _greenplum_config.repo_directory }}"

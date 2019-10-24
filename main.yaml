@@ -16,11 +16,17 @@
         that:
           - git_user is defined
           - git_email is defined
-
   roles:
     - common
     - dev_tools
     - postgres_dev
+
+- import_playbook: build_gpdb.yaml
+  tags:
+    - build_gpdb
+  when:
+   - build_gpdb is defined
+   - build_gpdb | bool
 
 - import_playbook: windows.yaml
   when: is_wsl == True
