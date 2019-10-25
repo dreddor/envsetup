@@ -5,6 +5,8 @@
     greenplum_config: {}
     orca_config: {}
     xerces_config: {}
+  vars_files:
+    - "{{userconfig}}"
   gather_facts: yes
 
   roles:
