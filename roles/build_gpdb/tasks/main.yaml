@@ -7,6 +7,17 @@
 - set_fact:
     _xerces_config: "{{ xerces_default_config | combine(xerces_config, recursive=True) }}"
 
+# Check out gpdb if a version is specifically set, or it is explicitly set in
+# the greenplum_config, otherwise just build the currently checked out version
+- set_fact:
+    _checkout_gpdb: True
+  when:
+    - gpdb_version is defined or _greenplum_config.repo_update
+- set_fact:
+    _greenplum_config: "{{ _greenplum_config | combine({'repo_update': True, 'repo_version': gpdb_version}) }}"
+  when:
+    - gpdb_version is defined
+
 - name: Check out gpdb version {{ _greenplum_config.repo_version }}
   git:
     repo: "{{ _greenplum_config.repo }}"
@@ -14,6 +25,7 @@
     version: "{{ _greenplum_config.repo_version }}"
     force: "{{ _greenplum_config.repo_force }}"
     update: "{{ _greenplum_config.repo_update }}"
+  when: _checkout_gpdb
 
 - name: Get ORCA version for build
   set_fact:

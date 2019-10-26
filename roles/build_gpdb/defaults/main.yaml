@@ -1,10 +1,11 @@
 ---
 gpdb_repo: https://github.com/greenplum-db/gpdb
-gpdb_version: HEAD
+# gpdb_version: < if set, check out this version >
 
 # Will be overridden if it is possible to build ORCA
 _build_xerces: False
 _build_orca: False
+_checkout_gpdb: False
 
 build_core_count: "{{ ansible_facts['processor_vcpus'] }}"
 
@@ -26,7 +27,7 @@ orca_default_config:
 greenplum_default_config:
     repo: "{{ gpdb_repo }}"
     repo_directory: "{{ansible_env.HOME}}/workspace/gpdb"
-    repo_version: "{{ gpdb_version }}"
+    repo_version: HEAD
     repo_force: False
     repo_update: False
 
