@@ -52,3 +52,5 @@
     name: vim-monokai ## default: vim-elixir
   - repo: "https://github.com/PProvost/vim-ps1.git"
     name: vim-ps1
+  - repo: "https://github.com/rhysd/vim-llvm.git"
+    name: vim-llvm
