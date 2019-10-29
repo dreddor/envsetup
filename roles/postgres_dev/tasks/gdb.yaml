@@ -4,5 +4,3 @@
     src: gdbinit
     dest: "{{ansible_env.HOME}}/.gdbinit"
     mode: 0755
-    owner: "{{ansible_env.USER }}"
-    group: "{{ansible_env.USER }}"

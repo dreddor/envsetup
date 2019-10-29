@@ -4,29 +4,21 @@
     path: "{{ ansible_env.HOME }}/.vim"
     state: directory
     mode: 0755
-    owner: "{{ansible_env.USER }}"
-    group: "{{ansible_env.USER }}"
 - name: Create the autoload directory
   file:
     path: "{{ ansible_env.HOME }}/.vim/autoload"
     state: directory
     mode: 0755
-    owner: "{{ansible_env.USER }}"
-    group: "{{ansible_env.USER }}"
 - name: Create the bundle directory
   file:
     path: "{{ ansible_env.HOME }}/.vim/bundle"
     state: directory
     mode: 0755
-    owner: "{{ansible_env.USER }}"
-    group: "{{ansible_env.USER }}"
 - name: Create the colors directory
   file:
     path: "{{ ansible_env.HOME }}/.vim/colors"
     state: directory
     mode: 0755
-    owner: "{{ansible_env.USER }}"
-    group: "{{ansible_env.USER }}"
 - name: "Install pathogen"
   get_url:
     url: https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
@@ -36,8 +28,6 @@
     src: vimrc
     dest: "{{ansible_env.HOME}}/.vimrc"
     mode: 0755
-    owner: "{{ansible_env.USER }}"
-    group: "{{ansible_env.USER }}"
 - name: "Install plugins"
   git:
     repo: "{{ item.repo }}"

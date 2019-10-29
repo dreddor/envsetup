@@ -4,15 +4,11 @@
     path: "{{ ansible_env.HOME }}/build"
     state: directory
     mode: 0755
-    owner: "{{ansible_env.USER }}"
-    group: "{{ansible_env.USER }}"
 - name: Create the golang directory
   file:
     path: "{{ ansible_env.HOME }}/build/golang"
     state: directory
     mode: 0755
-    owner: "{{ansible_env.USER }}"
-    group: "{{ansible_env.USER }}"
 - name: Add golang bashrc customizations
   blockinfile:
     dest: "{{ ansible_env.HOME }}/.bashrc"

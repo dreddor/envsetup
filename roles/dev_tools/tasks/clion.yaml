@@ -3,15 +3,11 @@
     path: "{{ ansible_env.HOME }}/.CLion2019.1/"
     state: directory
     mode: 0755
-    owner: "{{ansible_env.USER }}"
-    group: "{{ansible_env.USER }}"
 - name: Create the CLion2019.1/config directory
   file:
     path: "{{ ansible_env.HOME }}/.CLion2019.1/config"
     state: directory
     mode: 0755
-    owner: "{{ansible_env.USER }}"
-    group: "{{ansible_env.USER }}"
 - name: Add default CLion vmoptions
   blockinfile:
     dest: "{{ ansible_env.HOME }}/.CLion2019.1/config/clion64.vmoptions"

@@ -14,39 +14,22 @@
     dest: "{{ ansible_env.HOME }}/workspace/gpdb"
     remote: origin
     update: no
-- git_config:
-    name: user.email
-    repo: "{{ ansible_env.HOME }}/workspace/gpdb"
-    scope: local
-    value: 'tvesely@pivotal.io'
 # Allows CLion to intraspect the gpdb project
 - name: Add a CMakeLists.txt file to the gpdb repo
   copy:
     src: CMakeLists.gpdb
     dest: "{{ansible_env.HOME}}/workspace/gpdb/CMakeLists.txt"
     mode: 0644
-    owner: "{{ansible_env.USER }}"
-    group: "{{ansible_env.USER }}"
 - name: Cloning gdbpg into ~/workspace
   git:
     repo: "https://github.com/tvesely/gdbpg"
     dest: "{{ ansible_env.HOME }}/workspace/gdbpg"
     remote: origin
-- git_config:
-    name: user.email
-    repo: "{{ ansible_env.HOME }}/workspace/gdbpg"
-    scope: local
-    value: 'tvesely@pivotal.io'
 - name: Cloning gphelpers into ~/workspace
   git:
     repo: "https://github.com/tvesely/gphelpers"
     dest: "{{ ansible_env.HOME }}/workspace/gphelpers"
     remote: origin
-- git_config:
-    name: user.email
-    repo: "{{ ansible_env.HOME }}/workspace/gphelpers"
-    scope: local
-    value: 'tvesely@pivotal.io'
 - name: Cloning gp-xerces into ~/workspace
   git:
     repo: "https://github.com/greenplum-db/gp-xerces"
@@ -58,11 +41,6 @@
     dest: "{{ ansible_env.HOME }}/workspace/gporca"
     remote: origin
     update: no
-- git_config:
-    name: user.email
-    repo: "{{ ansible_env.HOME }}/workspace/gporca"
-    scope: local
-    value: 'tvesely@pivotal.io'
 - name: Cloning postgres into ~/workspace
   git:
     repo: "https://github.com/postgres/postgres"
@@ -77,8 +55,6 @@
     src: CMakeLists.postgres
     dest: "{{ansible_env.HOME}}/workspace/postgres/CMakeLists.txt"
     mode: 0644
-    owner: "{{ansible_env.USER }}"
-    group: "{{ansible_env.USER }}"
   tags:
     -postgres
 - name: Cloning tpch-dbgen into ~/workspace
