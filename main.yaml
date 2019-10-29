@@ -28,6 +28,13 @@
    - build_gpdb is defined
    - build_gpdb | bool
 
+- import_playbook: build_postgres.yaml
+  tags:
+    - build_postgres
+  when:
+   - build_postgres is defined
+   - build_postgres | bool
+
 - import_playbook: windows.yaml
   when: is_wsl == True
   tags:

@@ -1,0 +1,11 @@
+---
+- name: Build postgres
+  hosts: localhost
+  vars:
+    postgres_config: {}
+  vars_files:
+    - "{{userconfig}}"
+  gather_facts: yes
+
+  roles:
+    - build_postgres

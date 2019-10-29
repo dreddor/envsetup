@@ -1,0 +1,29 @@
+---
+postgres_repo: https://github.com/postgres/postgres
+# postgres_version: < if set, check out this version >
+
+# Will be overridden if it is possible to build ORCA
+_checkout_postgres: False
+
+build_core_count: "{{ ansible_facts['processor_vcpus'] }}"
+
+postgres_default_config:
+    repo: "{{ postgres_repo }}"
+    repo_directory: "{{ansible_env.HOME}}/workspace/postgres"
+    repo_version: HEAD
+    repo_force: False
+    repo_update: False
+
+    # Build flags
+    with_lz4: False
+    enable_debug: True
+    enable_cassert: True
+    cflags: "-O0 -fno-omit-frame-pointer"
+
+    prefix: "/usr/local/pgsql"
+
+    build_core_count: "{{ build_core_count }}"
+
+postgres_standard_build:
+    enable_cassert: False
+    cflags: "-O2 -fno-omit-frame-pointer"

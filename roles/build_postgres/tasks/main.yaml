@@ -1,0 +1,26 @@
+---
+- name: Get configuration
+  set_fact:
+    _postgres_config: "{{ postgres_default_config | combine(postgres_config, recursive=True) }}"
+
+# Check out gpdb if a version is specifically set, or it is explicitly set in
+# the greenplum_config, otherwise just build the currently checked out version
+- set_fact:
+    _checkout_postgres: True
+  when:
+    - postgres_version is defined or _postgres_config.repo_update
+- set_fact:
+    _postgres_config: "{{ _postgres_config | combine({'repo_update': True, 'repo_version': postgres_version}) }}"
+  when:
+    - postgres_version is defined
+
+- name: Check out postgres version {{ _postgres_config.repo_version }}
+  git:
+    repo: "{{ _postgres_config.repo }}"
+    dest: "{{ _postgres_config.repo_directory }}"
+    version: "{{ _postgres_config.repo_version }}"
+    force: "{{ _postgres_config.repo_force }}"
+    update: "{{ _postgres_config.repo_update }}"
+  when: _checkout_postgres
+
+- include: postgres.yaml
