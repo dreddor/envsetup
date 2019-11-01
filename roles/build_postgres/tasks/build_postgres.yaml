@@ -1,0 +1,22 @@
+---
+- set_fact:
+    _lz4_flag:  "{{ _build_postgres_config.with_lz4 | ternary('--with-lz4', '--without-lz4') }}"
+    _debug_flag: "{{ _build_postgres_config.enable_debug | ternary('--enable-debug', '--disable-debug')}}"
+    _cassert_flag: "{{ _build_postgres_config.enable_cassert | ternary('--enable-cassert', '--disable-cassert')}}"
+
+- name: Configure postgres
+  command: ./configure {{ _lz4_flag }} {{ _debug_flag }} {{ _cassert_flag }} --prefix={{ _build_postgres_config.prefix }}
+  args:
+    chdir: "{{ _build_postgres_config.repo_directory }}"
+  environment:
+    CFLAGS: "{{ _build_postgres_config.cflags }}"
+
+- name: Clean postgres
+  command: make clean
+  args:
+    chdir: "{{ _build_postgres_config.repo_directory }}"
+
+- name: Install postgres
+  command: make install -j{{ _build_postgres_config.build_core_count}}
+  args:
+    chdir: "{{ _build_postgres_config.repo_directory }}"
