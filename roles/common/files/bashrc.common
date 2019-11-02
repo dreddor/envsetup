@@ -6,12 +6,7 @@ if [ -d $HOME/.local/bin ]; then
     export PATH=$HOME/.local/bin:$PATH
 fi
 
-if [ -f /usr/bin/pip3 ]; then
-    PIP=/usr/bin/pip3
-elif [ -f /usr/bin/pip ]; then
-    PIP=/usr/bin/pip
-fi
-
+python -m pip 2>&1 > /dev/null && export PIP='python -m pip'
 if [ "$PIP" != "" ]; then
     POWERLINE_PACKAGE_LOCATION=$($PIP show powerline-status | perl -lane 'next unless /Location:\s+(.*)$/; print $1')
 fi
