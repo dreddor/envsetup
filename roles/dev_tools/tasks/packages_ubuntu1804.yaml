@@ -2,9 +2,9 @@
   apt:
     name: "docker.io"
     state: present
-- name: Install vagrant 2.2.5
+- name: Install vagrant 2.2.6
   apt:
-    deb: https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb
+    deb: https://releases.hashicorp.com/vagrant/2.2.6/vagrant_2.2.6_x86_64.deb
     state: present
   when: is_vagrant == False
   tags:

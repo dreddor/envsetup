@@ -33,11 +33,11 @@
     members:
       - "{{ ansible_facts['env']['USERNAME'] }}"
     state: present
-- name: ensure vagrant 2.2.5 is installed
+- name: ensure vagrant 2.2.6 is installed
   win_chocolatey:
     name: vagrant
     state: present
-    version: 2.2.5
+    version: 2.2.6
     force: yes
   tags:
     - vagrant
