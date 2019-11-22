@@ -1,0 +1,9 @@
+---
+zedstore_production_build:
+    cflags: "-O2 -fno-omit-frame-pointer"
+    with_lz4: True
+    enable_cassert: False
+
+zedstore_debug_build:
+    cflags: "-O0 -fno-omit-frame-pointer"
+    with_lz4: True
