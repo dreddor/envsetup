@@ -10,12 +10,14 @@
     regexp: '^%wheel'
     line: '%wheel ALL=(ALL) NOPASSWD: ALL'
     validate: 'visudo -cf %s'
-- name: Add user
+- name: Add user {{ ansible_env.USER }}
   user:
     name: "{{ ansible_env.USER }}"
     shell: /bin/bash
     groups: wheel,docker
     append: yes
+- name: reset ssh connection
+  meta: reset_connection
 - name: Make /usr/local/lib/ group wheel
   file:
     path: "/usr/local/lib"
