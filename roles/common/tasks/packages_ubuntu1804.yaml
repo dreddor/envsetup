@@ -41,6 +41,12 @@
     name: tmux
     state: present
   become: yes
+- name: Install yakuake
+  apt:
+    name: yakuake
+    state: present
+  become: yes
+
 
 # For powerline (only makes sense on full linux distribution)
 - name: Install the fonts-powerline package
