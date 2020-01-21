@@ -1,0 +1,20 @@
+---
+- name: Build gpdb
+  hosts: localhost
+  vars:
+    greenplum_config: {}
+    orca_config: {}
+    xerces_config: {}
+    gpdb_directory_config:
+        repo_directory: "{{ ansible_env.HOME}}/workspace/gpdb6"
+        prefix: "/usr/local/gpdb6"
+  vars_files:
+    - "{{userconfig}}"
+  gather_facts: yes
+  pre_tasks:
+    - name: Set directory
+      set_fact:
+        greenplum_config: "{{ greenplum_config | combine(gpdb_directory_config | default({}), recursive=True) }}"
+
+  roles:
+    - build_gpdb

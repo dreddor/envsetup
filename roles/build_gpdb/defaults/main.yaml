@@ -33,9 +33,11 @@ greenplum_default_config:
 
     # Build flags
     with_libxml: True
+    with_zstd: True
+    with_python: True
+    enable_debug_extensions: True
     enable_orca: True
     enable_gpcloud: True
-    enable_zstd: True
     enable_debug: True
     enable_cassert: True
     cflags: "-O0 -fno-omit-frame-pointer"
