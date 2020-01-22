@@ -45,6 +45,18 @@
    - slurpfile['content'] | b64decode | from_yaml is defined
    - (slurpfile['content'] | b64decode | from_yaml).params.ORCA_TAG is defined
 
+- command: grep -Po 'v\d+.\d+.\d+' {{ _greenplum_config.repo_directory }}/depends/conanfile_orca.txt
+  when:
+    _orca_tag is not defined
+  register: orca_command_output
+
+- set_fact:
+    _orca_tag: "{{ orca_command_output.stdout }}"
+  when:
+    - orca_command_output is defined
+    - orca_command_output.failed is defined
+    - not orca_command_output.failed
+
 - set_fact:
     _build_xerces: True
     _build_orca: True
