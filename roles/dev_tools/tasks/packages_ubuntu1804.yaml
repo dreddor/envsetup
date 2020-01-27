@@ -28,8 +28,20 @@
     state: present
     classic: yes
   when: is_wsl == False
+- name: Install the goland package
+  snap:
+    name: "goland"
+    state: present
+    classic: yes
+  when: is_wsl == False
 - name: Install fontconfig for fonts in x11 for clion
   apt:
     name: "fontconfig"
     state: present
+  when: is_wsl == False
+- name: Install the gcloud package
+  snap:
+    name: "google-cloud-sdk"
+    state: present
+    classic: yes
   when: is_wsl == False

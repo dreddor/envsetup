@@ -1,0 +1,8 @@
+---
+- include: packages_ubuntu1804.yaml
+  become: yes
+  when:
+    - ansible_facts['distribution'] == "Ubuntu"
+    - ansible_facts['distribution_version'] == "18.04"
+- include: helm.yaml
+#- include: minikube.yaml

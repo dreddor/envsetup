@@ -1,0 +1,24 @@
+---
+- name: Download helm to PATH
+  get_url:
+    url: https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz
+    dest: /tmp/helm-v3.0.2-linux-amd64.tar.gz
+- name: Extract helm
+  unarchive:
+    remote_src: yes
+    src: /tmp/helm-v3.0.2-linux-amd64.tar.gz
+    dest: /tmp/
+  become: yes
+- name: Copy helm to /usr/local/bin
+  copy:
+    src: /tmp/linux-amd64/helm
+    dest: /usr/local/bin/helm-v3.0.2
+    mode: 0755
+  become: yes
+- name: Set helm 3.0.2 as the system default
+  file:
+    src: /usr/local/bin/helm-v3.0.2
+    dest: /usr/local/bin/helm
+    state: link
+    mode: 0755
+  become: yes

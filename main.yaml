@@ -19,6 +19,7 @@
   roles:
     - common
     - dev_tools
+    - kube_dev
     - postgres_dev
 
 - import_playbook: build_gpdb.yaml

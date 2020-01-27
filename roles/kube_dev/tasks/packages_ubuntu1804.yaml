@@ -1,0 +1,20 @@
+---
+- name: Install the kubectl package
+  snap:
+    name: "kubectl"
+    state: present
+    classic: yes
+  when: is_wsl == False
+- name: Install the microk8s package
+  snap:
+    name: "microk8s"
+    state: present
+    classic: yes
+  when: is_wsl == False
+- name: Add user {{ ansible_env.USER }}
+  user:
+    name: "{{ ansible_env.USER }}"
+    shell: /bin/bash
+    groups: microk8s
+    append: yes
+  when: is_wsl == False
