@@ -10,10 +10,17 @@
   tags:
     - vagrant
 # Requirements for go development
-- name: Install the go programming language package
+- name: Apt install the go programming language package
   apt:
     name: "golang-go"
     state: present
+  when: is_wsl == True
+- name: Snap install the go programming language package
+  snap:
+    name: "go"
+    state: present
+    classic: yes
+  when: is_wsl == False
 
 # Development utilities
 - name: Install valgrind
