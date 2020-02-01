@@ -46,7 +46,7 @@
     name: yakuake
     state: present
   become: yes
-
+  when: is_wsl == False and is_vagrant == False
 
 # For powerline (only makes sense on full linux distribution)
 - name: Install the fonts-powerline package
