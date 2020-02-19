@@ -74,3 +74,6 @@ if $POWERLINE_PATH != ""
     set laststatus=2
     set t_Co=256
 endif
+
+" Use the X11 clipboard
+set clipboard=unnamedplus
