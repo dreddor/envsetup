@@ -1,0 +1,6 @@
+- name: Add kube_dev bashrc customizations
+  blockinfile:
+    dest: "{{ ansible_env.HOME }}/.bashrc"
+    block: "{{ lookup('file', '~/deployments/envsetup/roles/kube_dev/files/bashrc.kubedev') }}"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK BASHRC KUBE_DEV"
+    create: yes

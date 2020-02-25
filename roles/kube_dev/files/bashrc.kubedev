@@ -1,0 +1,5 @@
+if [ -d /usr/local/kubebuilder/bin ]; then
+    export PATH=$PATH:/usr/local/kubebuilder/bin
+fi
+
+alias k=kubectl

@@ -1,0 +1,24 @@
+---
+- name: Download kustomize to /tmp/
+  get_url:
+    url: https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.5.4/kustomize_v3.5.4_linux_amd64.tar.gz
+    dest: /tmp/kustomize_v3.5.4_linux_amd64.tar.gz
+- name: Extract kustomize
+  unarchive:
+    remote_src: yes
+    src: /tmp/kustomize_v3.5.4_linux_amd64.tar.gz
+    dest: /tmp/
+  become: yes
+- name: Copy kustomize to /usr/local/bin
+  copy:
+    src: /tmp/kustomize
+    dest: /usr/local/bin/kustomize-3.5.4
+    mode: 0755
+  become: yes
+- name: Set kustomize 3.5.4 as the system default
+  file:
+    src: /usr/local/bin/kustomize-3.5.4
+    dest: /usr/local/bin/kustomize
+    state: link
+    mode: 0755
+  become: yes
