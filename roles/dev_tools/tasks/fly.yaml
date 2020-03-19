@@ -5,9 +5,25 @@
     dest: /usr/local/bin/fly_linux_amd64-4.2.1
     mode: 0755
   become: yes
-- name: Set fly 4.2.1 as the system default
+- name: Download fly 5.7.1 to /tmp/
+  get_url:
+    url: https://github.com/concourse/concourse/releases/download/v5.7.1/fly-5.7.1-linux-amd64.tgz
+    dest: /tmp/fly-5.7.1-linux-amd64.tgz
+- name: Extract fly 5.7.1
+  unarchive:
+    remote_src: yes
+    src: /tmp/fly-5.7.1-linux-amd64.tgz
+    dest: /tmp/
+  become: yes
+- name: Copy fly to /usr/local/bin
+  copy:
+    src: /tmp/fly
+    dest: /usr/local/bin/fly-5.7.1
+    mode: 0755
+  become: yes
+- name: Set fly as the system default
   file:
-    src: /usr/local/bin/fly_linux_amd64-4.2.1
+    src: /usr/local/bin/fly-5.7.1
     dest: /usr/local/bin/fly
     state: link
     mode: 0755
