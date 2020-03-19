@@ -20,6 +20,7 @@
     name: "go"
     state: present
     classic: yes
+    channel: 1.14/stable
   when: is_wsl == False
 
 # Development utilities
