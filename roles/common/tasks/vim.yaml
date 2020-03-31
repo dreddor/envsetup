@@ -44,3 +44,5 @@
     name: vim-ps1
   - repo: "https://github.com/rhysd/vim-llvm.git"
     name: vim-llvm
+  - repo: "https://github.com/google/vim-jsonnet"
+    name: vim-jsonnet

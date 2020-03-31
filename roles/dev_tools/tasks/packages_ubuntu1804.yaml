@@ -53,3 +53,8 @@
     state: present
     classic: yes
   when: is_wsl == False
+- name: Install the jsonnet package
+  snap:
+    name: "jsonnet"
+    state: present
+  when: is_wsl == False
