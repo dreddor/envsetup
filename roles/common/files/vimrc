@@ -69,7 +69,7 @@ set viminfo-=<50,s10
 " Do not fix the end of the file- necessary for binary file editing
 set nofixendofline
 
-if $POWERLINE_PATH != ""
+if ($POWERLINE_PATH != "" && !has("gui_running"))
     set rtp+=$POWERLINE_PATH/bindings/vim/
     set laststatus=2
     set t_Co=256
