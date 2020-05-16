@@ -1,0 +1,6 @@
+---
+- name: Install jsonnet
+  pip:
+    name: jsonnet
+    executable: pip3
+  tags: jsonnet

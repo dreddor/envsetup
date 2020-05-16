@@ -16,3 +16,4 @@
 - include: linode.yaml
 - include: pivnet-cli.yaml
 - include: terraform.yaml
+- include: jsonnet.yaml
