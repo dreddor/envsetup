@@ -13,3 +13,6 @@ fi
 if [  "$GOROOT" != "" ]; then
     export PATH=$GOROOT/bin:$PATH
 fi
+
+# direnv is typically used to build go tools for any given project
+which direnv 2>&1 > /dev/null && eval "$(direnv hook bash)"

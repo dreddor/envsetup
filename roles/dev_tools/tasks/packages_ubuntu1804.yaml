@@ -22,6 +22,12 @@
     classic: yes
     channel: 1.14/stable
   when: is_wsl == False
+- name: Install the direnv package
+  apt:
+    name: direnv
+    state: present
+  tags:
+    - direnv
 
 # Development utilities
 - name: Install valgrind
