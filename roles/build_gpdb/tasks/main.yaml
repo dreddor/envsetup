@@ -49,6 +49,7 @@
   when:
     _orca_tag is not defined
   register: orca_command_output
+  ignore_errors: True
 
 - set_fact:
     _orca_tag: "{{ orca_command_output.stdout }}"
