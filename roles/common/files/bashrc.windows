@@ -1,5 +1,19 @@
+if uname -r | grep Microsoft 2>&1 > /dev/null; then
+    export WSL_VERSION=1
+else
+    export WSL_VERSION=2
+fi
+
+# See https://docs.microsoft.com/en-us/windows/wsl/compare-versions#accessing-windows-networking-apps-from-linux-host-ip
+if [ ${WSL_VERSION} -eq 1 ]; then
+    export WSL_HOST=127.0.0.1
+else
+    export WSL_HOST=$(tail -1 /etc/resolv.conf | cut -d' ' -f2)
+fi
+
+
 # Use the Windows docker daemon when using WSL
 export DOCKER_HOST=tcp://localhost:2375
-export DISPLAY=127.0.0.1:0.0
+export DISPLAY=${WSL_HOST}:0.0
 # Use Windows vagrant
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
