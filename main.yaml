@@ -37,6 +37,5 @@
    - build_postgres | bool
 
 - import_playbook: windows.yaml
-  when: is_wsl == True
   tags:
     - windows
