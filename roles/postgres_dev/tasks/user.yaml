@@ -14,7 +14,7 @@
   user:
     name: "{{ ansible_env.USER }}"
     shell: /bin/bash
-    groups: wheel,docker
+    groups: wheel
     append: yes
 - name: reset ssh connection
   meta: reset_connection
