@@ -1,0 +1,2 @@
+# this var is in common with build_gpdb
+gpdb_install_path: /usr/local/gpdb

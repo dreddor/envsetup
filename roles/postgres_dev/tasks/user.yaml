@@ -34,7 +34,7 @@
     group: wheel
 - name: Create a directory for gpdb installation
   file:
-    path: "/usr/local/gpdb"
+    path: "{{ gpdb_install_path }}"
     state: directory
     mode: 0755
     owner: "{{ ansible_env.USER }}"

@@ -1,6 +1,8 @@
 ---
 gpdb_repo: https://github.com/greenplum-db/gpdb
 # gpdb_version: < if set, check out this version >
+# this var is in common with postgres_dev
+gpdb_install_path: /usr/local/gpdb
 
 # Will be overridden if it is possible to build ORCA
 _build_xerces: False
@@ -42,7 +44,7 @@ greenplum_default_config:
     enable_cassert: True
     cflags: "-O0 -fno-omit-frame-pointer"
 
-    prefix: "/usr/local/gpdb"
+    prefix: "{{ gpdb_install_path }}"
 
     build_core_count: "{{ build_core_count }}"
 
