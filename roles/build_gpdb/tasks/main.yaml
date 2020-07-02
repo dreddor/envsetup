@@ -59,7 +59,6 @@
     - not orca_command_output.failed
 
 - set_fact:
-    _build_xerces: True
     _build_orca: True
     _orca_version_string: "{{ _orca_tag | regex_replace('^v(\\d+\\.\\d+\\.\\d+)$', '\\1') }}"
   when:
@@ -67,7 +66,6 @@
     - _greenplum_config.enable_orca
 
 - include: gp_xerces.yaml
-  when: _build_xerces
 - include: gporca.yaml
   when: _build_orca
 - include: gpdb.yaml
