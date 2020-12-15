@@ -14,14 +14,14 @@
   apt:
     name: "golang-go"
     state: present
-  when: is_wsl == True
+  when: has_snap == False
 - name: Snap install the go programming language package
   snap:
     name: "go"
     state: present
     classic: yes
     channel: 1.14/stable
-  when: is_wsl == False
+  when: has_snap == True
 - name: Install the direnv package
   apt:
     name: direnv
@@ -41,21 +41,21 @@
     name: "clion"
     state: present
     classic: yes
-  when: is_wsl == False
+  when: has_snap == True
 - name: Install the goland package
   snap:
     name: "goland"
     state: present
     classic: yes
-  when: is_wsl == False
+  when: has_snap == True
 - name: Install fontconfig for fonts in x11 for clion
   apt:
     name: "fontconfig"
     state: present
-  when: is_wsl == False
+  when: has_snap == True
 - name: Install the gcloud package
   snap:
     name: "google-cloud-sdk"
     state: present
     classic: yes
-  when: is_wsl == False
+  when: has_snap == True

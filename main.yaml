@@ -11,6 +11,7 @@
     - linux
 
   pre_tasks:
+    - include: set_windows_vars.yaml
     - name: mandatory variables
       assert:
         that:

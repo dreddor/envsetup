@@ -11,9 +11,7 @@ else
     export WSL_HOST=$(tail -1 /etc/resolv.conf | cut -d' ' -f2)
 fi
 
-
-# Use the Windows docker daemon when using WSL
-export DOCKER_HOST=tcp://localhost:2375
 export DISPLAY=${WSL_HOST}:0.0
+
 # Use Windows vagrant
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
