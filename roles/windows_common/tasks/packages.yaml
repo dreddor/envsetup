@@ -39,3 +39,7 @@
   win_chocolatey:
     name: discord
     state: latest
+- name: ensure keybase is installed
+  win_chocolatey:
+    name: keybase
+    state: latest
