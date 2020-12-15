@@ -22,6 +22,7 @@
     - dev_tools
     - kube_dev
     - postgres_dev
+    - yugabyte_dev
 
 - import_playbook: build_gpdb.yaml
   tags:

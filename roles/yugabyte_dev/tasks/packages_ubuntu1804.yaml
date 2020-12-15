@@ -1,0 +1,11 @@
+---
+- name: Install required package for yugabyte-db development
+  apt:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items:
+      - python3-venv
+      - libncurses5-dev
+      - autoconf
+      - libtool
