@@ -30,12 +30,6 @@
   vars_files:
     - "{{userconfig}}"
 
-  pre_tasks:
-    - name: mandatory variables
-      assert:
-        that:
-          - is_wsl == True
-
   roles:
     - windows_common
     - windows_dev_tools
