@@ -80,7 +80,7 @@
     - run_tpch_datagen == True
 - name: Cloning pg_bsd_indent into ~/workspace
   git:
-    repo: "https://git.postgresql.org/git/pg_bsd_indent"
+    repo: "git://git.postgresql.org/git/pg_bsd_indent.git"
     dest: "{{ ansible_env.HOME }}/workspace/pg_bsd_indent"
     remote: origin
   tags:
